@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerenciar catálogo | CineMatch</title>
+<link rel="stylesheet" href="css/style.css?v=10">
+</head>
+<body>
+<header>
+<a class="logo" href="index.html" aria-label="CineMatch — página inicial"><span>Cine</span>Match</a>
+<nav aria-label="Menu principal">
+<button type="button" onclick="window.location='favoritos.html'">Favoritos</button>
+<a id="botao-gerenciar" class="nav-button is-current" href="gerenciar-catalogo.html" hidden>Editar catálogo</a>
+<div id="menu-perfil" class="profile-menu" hidden>
+<button id="botao-perfil" class="profile-trigger button-secondary" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="opcoes-perfil">
+<span id="nome-usuario"></span><span class="profile-chevron" aria-hidden="true">⌄</span>
+</button>
+<div id="opcoes-perfil" class="profile-dropdown" role="menu" hidden>
+<button class="profile-logout" type="button" role="menuitem" onclick="logout()">Sair da conta</button>
+</div>
+</div>
+</nav>
+</header>
+
+<main class="manager-page">
+<section class="manager-heading">
+<div>
+<p class="eyebrow">Administração</p>
+<h1>Gerenciar catálogo</h1>
+<p id="contador-obras" class="manager-count">Carregando obras...</p>
+</div>
+<a class="action-link action-link-primary" href="adicionar-obra.html"><span aria-hidden="true">＋</span> Adicionar obra</a>
+</section>
+
+<section class="catalog-controls" aria-label="Busca, filtros e ordenação">
+<label class="search-field">
+<span>Buscar</span>
+<input id="busca-obras" type="search" placeholder="Título, gênero ou descrição" autocomplete="off">
+</label>
+<label>
+<span>Gênero</span>
+<select id="filtro-genero">
+<option value="">Todos os gêneros</option>
+</select>
+</label>
+<label>
+<span>Ordenar</span>
+<select id="ordenacao-obras">
+<option value="titulo-asc">Título: A–Z</option>
+<option value="titulo-desc">Título: Z–A</option>
+<option value="lancamento-desc">Lançamentos mais recentes</option>
+<option value="cadastro-desc">Adicionados recentemente</option>
+</select>
+</label>
+</section>
+
+<p id="mensagem-admin" class="mensagem manager-message" role="status"></p>
+<section id="lista-obras" class="works-list" aria-live="polite" aria-label="Obras do catálogo"></section>
+</main>
+
+<dialog id="dialogo-excluir" class="delete-dialog" aria-labelledby="titulo-dialogo-excluir">
+<div class="dialog-icon" aria-hidden="true">!</div>
+<h2 id="titulo-dialogo-excluir">Excluir obra?</h2>
+<p>Você está prestes a remover <strong id="nome-obra-excluir"></strong> do catálogo e dos favoritos de todos os usuários.</p>
+<div class="dialog-actions">
+<button id="cancelar-exclusao" class="button-secondary" type="button">Cancelar</button>
+<button id="confirmar-exclusao" class="danger-button" type="button">Excluir definitivamente</button>
+</div>
+</dialog>
+
+<script src="js/api.js?v=10"></script>
+<script src="js/catalogo-admin.js?v=10"></script>
+</body>
+</html>

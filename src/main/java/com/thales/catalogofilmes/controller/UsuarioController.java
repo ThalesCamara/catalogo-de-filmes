@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -33,10 +34,13 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> criarUsuario(@RequestBody Usuario usuario) {
-
-        Usuario novoUsuario = usuarioService.salvar(usuario);
-        return ResponseEntity.ok(novoUsuario);
+    public ResponseEntity<?> criarUsuario(@RequestBody Usuario usuario) {
+        try {
+            Usuario novoUsuario = usuarioService.salvar(usuario);
+            return ResponseEntity.status(201).body(novoUsuario);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(Map.of("mensagem", e.getMessage()));
+        }
     }
 
     @PutMapping("/{id}")

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrar | CineMatch</title>
+<link rel="stylesheet" href="css/style.css?v=10">
+</head>
+<body class="login-body">
+<main class="login-container">
+<a class="logo login-logo" href="index.html" aria-label="CineMatch — página inicial"><span>Cine</span>Match</a>
+<section class="login-box" aria-labelledby="titulo-autenticacao">
+<div class="auth-tabs" role="tablist" aria-label="Acesso à conta">
+<button id="tab-login" class="auth-tab active" type="button" onclick="mostrarLogin()">Entrar</button>
+<button id="tab-cadastro" class="auth-tab" type="button" onclick="mostrarCadastro()">Criar conta</button>
+</div>
+<form id="form-login" onsubmit="login(event)">
+<h1 id="titulo-autenticacao">Entrar</h1>
+<label for="email">E-mail</label>
+<input id="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+<label for="senha">Senha</label>
+<input id="senha" type="password" autocomplete="current-password" placeholder="Sua senha" required>
+<button class="button-primary" type="submit">Entrar</button>
+</form>
+<form id="form-cadastro" onsubmit="cadastrar(event)" hidden>
+<h1>Criar conta</h1>
+<label for="cadastro-nome">Nome</label>
+<input id="cadastro-nome" autocomplete="name" placeholder="Seu nome" required>
+<label for="cadastro-email">E-mail</label>
+<input id="cadastro-email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+<label for="cadastro-senha">Senha</label>
+<input id="cadastro-senha" type="password" autocomplete="new-password" minlength="6" placeholder="Mínimo de 6 caracteres" required>
+<button class="button-primary" type="submit">Criar conta</button>
+</form>
+<p id="erro" class="form-feedback" role="alert"></p>
+<a class="back-link" href="index.html">Voltar para o início</a>
+</section>
+</main>
+<script src="js/api.js?v=10"></script>
+<script src="js/login.js?v=10"></script>
+</body>
+</html>

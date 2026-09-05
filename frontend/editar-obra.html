@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editar obra | CineMatch</title>
+<link rel="stylesheet" href="css/style.css?v=10">
+</head>
+<body data-form-mode="editar">
+<header>
+<a class="logo" href="index.html" aria-label="CineMatch — página inicial"><span>Cine</span>Match</a>
+<nav aria-label="Menu principal">
+<a id="botao-gerenciar" class="nav-button is-current" href="gerenciar-catalogo.html" hidden>Editar catálogo</a>
+<div id="menu-perfil" class="profile-menu" hidden>
+<button id="botao-perfil" class="profile-trigger button-secondary" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="opcoes-perfil">
+<span id="nome-usuario"></span><span class="profile-chevron" aria-hidden="true">⌄</span>
+</button>
+<div id="opcoes-perfil" class="profile-dropdown" role="menu" hidden>
+<button class="profile-logout" type="button" role="menuitem" onclick="logout()">Sair da conta</button>
+</div>
+</div>
+</nav>
+</header>
+
+<main class="work-form-page">
+<div class="form-page-heading">
+<a class="back-link-inline" href="gerenciar-catalogo.html">← Voltar para o catálogo</a>
+<p class="eyebrow">Edição</p>
+<h1>Editar obra</h1>
+</div>
+<div class="work-form-layout">
+<form id="form-obra" class="work-form">
+<div id="grupo-id" class="form-field">
+<label for="obra-id">ID</label>
+<input id="obra-id" type="number" readonly>
+<small>Identificador gerado pelo banco de dados.</small>
+</div>
+<div class="form-field form-field-wide">
+<label for="obra-titulo">Título *</label>
+<input id="obra-titulo" type="text" maxlength="255" required autocomplete="off">
+</div>
+<div class="form-field">
+<label for="obra-genero">Gênero</label>
+<input id="obra-genero" type="text" maxlength="100" placeholder="Ex.: Drama" autocomplete="off">
+</div>
+<div class="form-field">
+<label for="obra-data">Data de lançamento</label>
+<input id="obra-data" type="date">
+</div>
+<div class="form-field form-field-wide">
+<label for="obra-capa">URL da capa</label>
+<input id="obra-capa" type="url" placeholder="https://exemplo.com/capa.jpg" autocomplete="url">
+</div>
+<div class="form-field form-field-wide">
+<label for="obra-descricao">Descrição</label>
+<textarea id="obra-descricao" rows="6" placeholder="Sinopse ou descrição da obra"></textarea>
+</div>
+<div class="form-field form-field-wide">
+<label for="obra-criado-em">Adicionado em</label>
+<input id="obra-criado-em" type="datetime-local" step="1">
+</div>
+<p id="mensagem-form" class="form-feedback form-feedback-wide" role="status">Carregando obra...</p>
+<div class="form-actions form-field-wide">
+<a class="action-link action-link-secondary" href="gerenciar-catalogo.html">Cancelar</a>
+<button id="salvar-obra" type="submit">Salvar alterações</button>
+</div>
+</form>
+<aside class="cover-preview-panel" aria-label="Prévia da capa">
+<p class="eyebrow">Prévia</p>
+<div id="previa-capa" class="cover-preview sem-capa">A capa aparecerá aqui</div>
+</aside>
+</div>
+</main>
+
+<script src="js/api.js?v=10"></script>
+<script src="js/obra-form.js?v=10"></script>
+</body>
+</html>

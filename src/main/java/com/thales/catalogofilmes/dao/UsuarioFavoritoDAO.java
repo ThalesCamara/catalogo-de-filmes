@@ -9,4 +9,6 @@ public interface UsuarioFavoritoDAO extends JpaRepository<UsuarioFavorito, Usuar
 
     List<UsuarioFavorito> findByUsuarioId(Integer usuarioId);
 
+    void deleteByFilmeId(Integer filmeId);
+
 }

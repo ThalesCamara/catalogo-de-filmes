@@ -1,8 +1,10 @@
 package com.thales.catalogofilmes.service;
 
 import com.thales.catalogofilmes.dao.FilmeDAO;
+import com.thales.catalogofilmes.dao.UsuarioFavoritoDAO;
 import com.thales.catalogofilmes.model.Filme;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,10 +13,12 @@ import java.util.Optional;
 public class FilmeService {
 
     private final FilmeDAO filmeDAO;
+    private final UsuarioFavoritoDAO usuarioFavoritoDAO;
 
     // Injeção de dependência via construtor (melhor prática)
-    public FilmeService(FilmeDAO filmeDAO) {
+    public FilmeService(FilmeDAO filmeDAO, UsuarioFavoritoDAO usuarioFavoritoDAO) {
         this.filmeDAO = filmeDAO;
+        this.usuarioFavoritoDAO = usuarioFavoritoDAO;
     }
 
     // 🎬 Criar filme
@@ -47,11 +51,13 @@ public class FilmeService {
         filme.setGenero(filmeAtualizado.getGenero());
         filme.setDataLancamento(filmeAtualizado.getDataLancamento());
         filme.setCapaUrl(filmeAtualizado.getCapaUrl());
+        filme.setCreatedAt(filmeAtualizado.getCreatedAt());
 
         return filmeDAO.save(filme);
     }
 
     // 🗑️ Deletar filme
+    @Transactional
     public void deletarFilme(int id) {
         Optional<Filme> filme = filmeDAO.findById(id);
 
@@ -59,6 +65,7 @@ public class FilmeService {
             throw new RuntimeException("Filme não encontrado");
         }
 
+        usuarioFavoritoDAO.deleteByFilmeId(id);
         filmeDAO.deleteById(id);
     }
 }

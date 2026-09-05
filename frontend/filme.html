@@ -1,21 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meus favoritos | CineMatch</title>
+<title>Detalhes do filme | CineMatch</title>
 <link rel="stylesheet" href="css/style.css?v=10">
 </head>
-
 <body>
-
 <header>
-
 <a class="logo" href="index.html" aria-label="CineMatch — página inicial"><span>Cine</span>Match</a>
-
 <nav aria-label="Menu principal">
+<button id="botao-favoritos" onclick="irFavoritos()">Favoritos</button>
+<button id="botao-entrar" onclick="irLogin()">Entrar</button>
 <a id="botao-gerenciar" class="nav-button" href="gerenciar-catalogo.html" hidden>Editar catálogo</a>
 <div id="menu-perfil" class="profile-menu" hidden>
 <button id="botao-perfil" class="profile-trigger button-secondary" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="opcoes-perfil">
@@ -26,23 +22,24 @@
 </div>
 </div>
 </nav>
-
 </header>
-
-<main>
-<div class="page-heading">
-<div>
-<p class="eyebrow">Sua coleção pessoal</p>
-<h1 class="section-title">Filmes que você escolheu</h1>
+<main class="detalhe-page">
+<p id="mensagem" class="mensagem detalhe-mensagem" role="status">Carregando filme...</p>
+<article id="detalhe-filme" class="detalhe-filme" hidden>
+<div id="detalhe-capa" class="detalhe-capa"></div>
+<div class="detalhe-conteudo">
+<p class="eyebrow">Detalhes do filme</p>
+<h1 id="detalhe-titulo"></h1>
+<div class="detalhe-meta">
+<span id="detalhe-genero"></span>
+<span id="detalhe-data"></span>
 </div>
+<p id="detalhe-descricao" class="detalhe-descricao"></p>
+<button id="detalhe-favoritar" class="favorite-button" type="button" aria-pressed="false">Favoritar</button>
 </div>
-<p id="mensagem" class="mensagem" role="status"></p>
-<div id="favoritos" class="filmes-grid" aria-live="polite"></div>
+</article>
 </main>
-
 <script src="js/api.js?v=10"></script>
-<script src="js/favoritos.js?v=10"></script>
-
+<script src="js/filme.js?v=10"></script>
 </body>
-
 </html>

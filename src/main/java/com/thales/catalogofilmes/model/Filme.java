@@ -2,6 +2,7 @@ package com.thales.catalogofilmes.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "filmes")
@@ -23,8 +24,18 @@ public class Filme {
     @Column(name = "data_lancamento")
     private LocalDate dataLancamento;
 
-    @Column(name = "capa_url")
+    @Column(name = "capa_url", columnDefinition = "TEXT")
     private String capaUrl;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    public void prePersist() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
+    }
 
     // getters e setters
 
@@ -74,5 +85,13 @@ public class Filme {
 
     public void setCapaUrl(String capaUrl) {
         this.capaUrl = capaUrl;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

@@ -1,36 +1,39 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Catálogo de Filmes</title>
-<link rel="stylesheet" href="css/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CineMatch | Encontre seu próximo filme</title>
+<link rel="stylesheet" href="css/style.css?v=10">
 </head>
-
-<body class="login-body">
-
-<div class="login-container">
-
-<h1 class="logo">CATÁLOGO</h1>
-
-<div class="login-box">
-
-<h2>Entrar</h2>
-
-<input id="email" placeholder="Email">
-
-<input id="senha" type="password" placeholder="Senha">
-
-<button onclick="login()">Entrar</button>
-
-<p id="erro"></p>
-
+<body>
+<header>
+<a class="logo" href="index.html" aria-label="CineMatch — página inicial"><span>Cine</span>Match</a>
+<nav id="menu-usuario" aria-label="Menu principal">
+<button id="botao-favoritos" onclick="irFavoritos()">Favoritos</button>
+<button id="botao-entrar" onclick="irLogin()">Entrar</button>
+<a id="botao-gerenciar" class="nav-button" href="gerenciar-catalogo.html" hidden>Editar catálogo</a>
+<div id="menu-perfil" class="profile-menu" hidden>
+<button id="botao-perfil" class="profile-trigger button-secondary" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="opcoes-perfil">
+<span id="nome-usuario"></span><span class="profile-chevron" aria-hidden="true">⌄</span>
+</button>
+<div id="opcoes-perfil" class="profile-dropdown" role="menu" hidden>
+<button class="profile-logout" type="button" role="menuitem" onclick="logout()">Sair da conta</button>
 </div>
-
 </div>
-
-<script src="js/api.js"></script>
-<script src="js/login.js"></script>
-
+</nav>
+</header>
+<main>
+<div class="page-heading">
+<div>
+<p class="eyebrow">Sua seleção de cinema</p>
+<h1 class="section-title">Encontre sua próxima história</h1>
+</div>
+</div>
+<p id="mensagem" class="mensagem" role="status"></p>
+<div id="filmes" class="filmes-grid" aria-live="polite"></div>
+</main>
+<script src="js/api.js?v=10"></script>
+<script src="js/catalogo.js?v=10"></script>
 </body>
 </html>
